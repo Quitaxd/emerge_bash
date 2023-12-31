@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "local" ]; then
+    ls ~/.emerge | grep "$2"
+fi
+
+if [ "$1" = "global" ]; then
+    pkglist="neofetch\n"
+    printf "$pkglist" | grep "$2"
+fi

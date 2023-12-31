@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+
+sudo="sudo"
+#sudo="doas"
+#sudo="su -c"
+
+if [ "$1" = "neofetch" ]; then
+    cd ~/.emerge/neofetch
+    $sudo make uninstall
+    cd -
+    rm -rf ~/.emerge/neofetch
+fi
+
+if [ "$1" = "fastfetch" ]; then
+    OLDDIR=$(echo $PWD)
+    cd ~/.emerge/fastfetch/build
+    sudo xargs rm < install_manifest.txt
+    cd $OLDDIR
+fi

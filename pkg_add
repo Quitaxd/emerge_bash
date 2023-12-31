@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+mkdir ~/.emerge 2>/dev/null
+
+sudo="sudo"
+#sudo="doas"
+#sudo="su -c"
+
+
+if [ "$1" = "neofetch" ]; then
+    git clone https://github.com/dylanaraps/neofetch ~/.emerge/neofetch
+    cd ~/.emerge/neofetch
+    $sudo make install
+    cd -
+fi
+
+if [ "$1" = "fastfetch" ]; then
+    OLDDIR=$(echo $PWD)
+    git clone https://github.com/fastfetch-cli/fastfetch/ ~/.emerge/fastfetch
+    cd ~/.emerge/fastfetch
+    mkdir -p build
+    cd build
+    cmake ..
+    $sudo cmake --build . --target install --target flashfetch
+    cd $OLDDIR
+fi
