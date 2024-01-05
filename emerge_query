@@ -5,6 +5,5 @@ if [ "$1" = "local" ]; then
 fi
 
 if [ "$1" = "global" ]; then
-    pkglist="neofetch\n"
-    printf "$pkglist" | grep "$2"
+    echo "Coming soon."
 fi
