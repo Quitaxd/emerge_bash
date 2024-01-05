@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+if [ "$1" = "" ]; then
+    printf "Usage;\nemerge_query local <pkgname> = search in installed packages.\nemerge_query global <pkgname> = search in all packages.\n"
+fi
+
 if [ "$1" = "local" ]; then
     ls ~/.emerge | grep "$2"
 fi
 
 if [ "$1" = "global" ]; then
-    echo "Coming soon."
+    curl -s https://raw.githubusercontent.com/Quitaxd/emerge_bash/main/pkglist | grep $2
 fi
